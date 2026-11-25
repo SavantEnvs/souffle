@@ -1,0 +1,11 @@
+project: savantenvs/souffle
+target: fuzz_cli
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_cli/testsuite
+
+# The souffle CLI on a .dl program: parse, semantic checks, AST/RAM transforms, interpreter.
+# Relations print to stdout (-D-); -F/dev/null makes every .input fail the same way on every host.
+cmds:
+  - cmd: /mayhem/fuzz_cli --no-preprocessor -j1 -F/dev/null -D- @@
+    timeout: 10

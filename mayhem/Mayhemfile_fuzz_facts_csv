@@ -1,0 +1,10 @@
+project: savantenvs/souffle
+target: fuzz_facts_csv
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_facts_csv/testsuite
+
+cmds:
+  - cmd: /mayhem/fuzz_facts_csv
+    libfuzzer: true
+    timeout: 5
